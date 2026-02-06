@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>لوحة الأدمن</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+body {
+  background-color: #e8f5e9; /* خلفية خضراء فاتحة */
+  font-family: Arial, sans-serif;
+  padding: 30px;
+}
+h2 {
+  color: #2e7d32; /* أخضر داكن */
+  margin-bottom: 20px;
+}
+#loginSection {
+  max-width: 400px;
+  margin: auto;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+#ordersSection {
+  margin-top: 40px;
+}
+.confirm-btn { background-color: #2196F3 !important; }
+.cancel-btn { background-color: #f44336 !important; }
+.delete-btn { background-color: #9c27b0 !important; color: #fff; }
+</style>
+</head>
+<body>
+
+<div id="loginSection" class="text-center">
+  <h2>تسجيل دخول الأدمن</h2>
+  <input id="email" type="email" class="form-control mb-2" placeholder="Email">
+  <input id="password" type="password" class="form-control mb-2" placeholder="Password">
+  <button id="loginBtn" class="btn btn-success w-100">Login</button>
+</div>
+
+<div id="ordersSection">
+  <h2 class="text-center">الطلبات</h2>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered align-middle text-center">
+      <thead class="table-success">
+        <tr>
+          <th>الاسم</th>
+          <th>الموبايل</th>
+          <th>العنوان</th>
+          <th>الحالة</th>
+          <th>إجراء</th>
+        </tr>
+      </thead>
+      <tbody id="orders"></tbody>
+    </table>
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+import { getFirestore, collection, doc, updateDoc, deleteDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics.js";
+
+// 🔹 Firebase Config
+const firebaseConfig = {
+  apiKey: "AIzaSyA4dIcOZQ6u2oR5eMlft9x_RJ9_9lIppq8",
+  authDomain: "bwaser-8aff1.firebaseapp.com",
+  projectId: "bwaser-8aff1",
+  storageBucket: "bwaser-8aff1.firebasestorage.app",
+  messagingSenderId: "632939529719",
+  appId: "1:632939529719:web:e971cc0706163118365af2",
+  measurementId: "G-B877NY510T"
+};
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth();
+const db = getFirestore(app);
+
+// 🔹 Login
+document.getElementById("loginBtn").addEventListener("click", ()=>{
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  signInWithEmailAndPassword(auth,email,password)
+    .then(()=>alert("تم تسجيل الدخول"))
+    .catch(err=>alert("خطأ: "+err.message));
+});
+
+// 🔹 Real-time orders
+const ordersTbody = document.getElementById("orders");
+
+onAuthStateChanged(auth,user=>{
+  if(user){
+    const q = query(collection(db,"orders"), orderBy("created","desc"));
+    onSnapshot(q,snapshot=>{
+      ordersTbody.innerHTML="";
+      snapshot.forEach(docSnap=>{
+        const o = docSnap.data();
+        ordersTbody.innerHTML+=`<tr>
+          <td>${o.name}</td>
+          <td>${o.phone}</td>
+          <td>${o.address}</td>
+          <td>${o.status}</td>
+          <td>
+            <button class="confirm-btn" onclick="confirmOrder('${docSnap.id}')">تأكيد</button>
+            <button class="cancel-btn" onclick="cancelOrder('${docSnap.id}')">إلغاء</button>
+            <button class="delete-btn" onclick="deleteOrder('${docSnap.id}')">حذف</button>
+          </td>
+          
+        </tr>`;
+      });
+    });
+  } else {
+    ordersTbody.innerHTML="<tr><td colspan='5'>سجّل دخولك لعرض الطلبات</td></tr>";
+  }
+});
+
+// 🔹 Cancel order
+window.cancelOrder = async (id)=>{
+  const orderRef = doc(db,"orders",id);
+  await updateDoc(orderRef,{status:"Cancelled"});
+};
+
+// 🔹 Confirm order
+window.confirmOrder = async (id)=>{
+  const orderRef = doc(db,"orders",id);
+  await updateDoc(orderRef,{status:"Confirmed"});
+};
+window.deleteOrder = async (id)=>{
+  const orderRef = doc(db,"orders",id);
+  await deleteDoc(orderRef);
+};
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

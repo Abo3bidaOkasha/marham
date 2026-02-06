@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المرهم الصيني لعلاج البواسير</title>
+<link rel="icon" href="logo.jfif" type="image/png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+<style>
+:root {
+    --main-green: #2d7a32;
+    --light-green: #e8f5e9;
+    --accent-orange: #c8712b;
+}
+
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background-color: var(--light-green); 
+    text-align: center;
+    margin: 0;
+    padding: 0 10px;
+}
+
+/* العنوان الرئيسي */
+h1 {
+    background-color: rgba(45,122,50,0.64);
+    border-radius: 20px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+/* زر الطلب العائم */
+.floo {
+    width: 90%;
+    max-width: 500px;
+    height: auto;
+    min-height: 80px;
+    background-color: var(--main-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50px;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+
+.floo h4 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+}
+
+.floo a {
+    color: white;
+    text-decoration: none;
+}
+
+.floo img {
+    width: 60px;
+    height: 60px;
+    border-radius: 0px 10px 0px 10px;
+}
+
+/* الصور */
+img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10%;
+    margin-bottom: 20px;
+}
+
+/* زر الطلب */
+.btn-order {
+    background-color: var(--main-green);
+    color: white; 
+    font-weight: bold; 
+    border-radius: 5px; 
+    padding: 10px 40px; 
+    margin-bottom: 20px;
+}
+
+/* قسم طريقة الاستخدام */
+.section-title {
+    background-color: var(--main-green);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+/* صندوق المعلومات */
+.info-box {
+    background-color: var(--main-green);
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* الأسئلة */
+.faq-header {
+    background-color: var(--main-green);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.question-box {
+    font-size: 1.2rem;
+    background-color: var(--main-green);
+    text-align: center; 
+    color: white;
+    padding: 12px;
+    border-radius: 5px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.answer-box {
+    font-size: 1rem;
+    padding: 15px; 
+    background: white; 
+    text-align: center; 
+    margin-bottom: 10px;
+}
+
+/* ضمانات */
+.guarantee-section {
+    margin-bottom: 10%;
+    display: block;
+    background-color: #fcfcfc;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 0;
+    overflow: hidden;
+}
+.guarantee-title {
+    background-color: #81c784; /* أخضر فاتح */
+    color: #000;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+}
+.guarantee-item {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px inset #eee;
+    flex-wrap: wrap;
+}
+.guarantee-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #a5d6a7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 15px;
+    color: var(--main-green);
+    font-size: 1.4rem;
+}
+.guarantee-content h5 {
+    margin: 0; 
+    font-weight: bold; 
+    color: var(--main-green);
+}
+.guarantee-content p {
+    margin: 0; 
+    font-size: 0.9rem; 
+    color: #666;
+}
+
+/* بانر الحياة الجديدة */
+.life-banner {
+    background-color: var(--main-green);
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 30px 0;
+}
+.life-banner h2 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.life-banner .order-now {
+    color: #ffd700;
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    h1 { font-size: 1.2rem; height: auto; padding: 10px; }
+    .floo { flex-direction: column; height: auto; padding: 10px; }
+    .floo img { margin-top: 10px; width: 50px; height: 50px; }
+    .btn-order { width: 90%; padding: 10px; font-size: 1rem; }
+    .section-title { font-size: 1.3rem; padding: 12px; }
+    .question-box { font-size: 1rem; padding: 10px; }
+    .answer-box { font-size: 0.9rem; padding: 10px; }
+    .guarantee-title { font-size: 1.3rem; padding: 12px; }
+    .guarantee-item { flex-direction: column; text-align: center; }
+    .guarantee-content h5 { font-size: 1rem; }
+    .guarantee-content p { font-size: 0.85rem; }
+    .life-banner h2 { font-size: 1.2rem; }
+    .life-banner .order-now { font-size: 1.1rem; }
+}
+</style>
+</head>
+<body>
+<h1>المرهم الصيني لعلاج البواسير</h1>
+
+<div class="floo" style="z-index: 10;">
+    <h4>
+        <a href="checkout.html">
+            <p style="font-size: 18px;">اطلب الان</p>
+            <p style="font-size: 12px;">التوصيل مجاني والدفع عند الاستلام</p>
+        </a>
+        <a href="admin.html">
+            <img src="logo.jfif" style="position: fixed;right: 30px;bottom: -7%;"  alt="admin">
+        </a>
+    </h4>
+</div>
+
+<div>
+    <img src="FristPage.jfif" alt="">
+    <!-- //////////////////////////////////////////////// -->
+    <div class="container my-4" style="width: 100%;">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6 col-lg-4">
+      
+      <div class="card shadow-lg border-0" style="border-radius: 20px;">
+        
+        <!-- Header -->
+        <div class="card-header text-center"
+             style="background: linear-gradient(135deg, #2d7a32, #4caf50); color: white; border-radius: 20px 20px 0 0;">
+          <h5 class="mb-0 fw-bold">المرهم الصيني لعلاج البواسير</h5>
+        </div>
+
+        <!-- Body -->
+        <div class="card-body text-center" style="width: 100%;">
+          <p class="text-muted mb-2">عرض خاص لفترة محدودة</p>
+
+          <h2 class="fw-bold text-success mb-1">
+            199 جنيه
+          </h2>
+
+          <del class="text-danger">260 جنيه</del>
+
+          <hr>
+
+          <ul class="list-unstyled text-end fw-semibold" style="text-align: center; margin: auto;">
+            <li>✅ مكونات عشبية طبيعية</li>
+            <li>✅ تخفيف الألم والحكة</li>
+            <li>✅ آمن وسهل الاستخدام</li>
+            <li>✅ الدفع عند الاستلام</li>
+          </ul>
+
+          <a href="checkout.html"
+             class="btn w-100 mt-3"
+             style="background-color:#2d7a32; color:white; font-weight:bold; border-radius: 10px;">
+            اطلب الآن
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    
+    <!-- //////////////////////////////////////////////// -->
+    <img src="SoraKHadra1.jfif" alt="">
+    <h2>مكونات عشبيه طبيعيه</h2>
+    <img src="qwer.jfif" alt="">
+</div>
+
+<div class="container my-5 text-center">
+    <button class="btn btn-order mb-4" onclick="goOrder()">أطلب الآن</button>
+    <div class="section-title mb-4">طريقة الإستخدام</div>
+    
+    <p class="fw-bold">ضع كمية صغيرة من الكريم على المنطقة المستهدفة بعد تنظيفها وتجفيفها جيداً</p>
+
+    <div class="info-box d-flex align-items-center justify-content-center">
+        <span class="me-3" style="font-size: 1.5rem;">🛡️</span>
+        <span style="font-size: 1.5rem;">الضمان</span>
+    </div>
+    <p class="text-muted fw-bold mb-5">
+        نثق بمنتجنا 100%، لذلك نضمن لك استعادة أموالك بالكامل إذا لم تلاحظي الفرق بعد الاستعمال المنتظم خلال 15 يومًا
+    </p>
+
+    <div class="faq-header">الأسئلة الشائعة</div>
+    <div class="text-end">
+        <div class="question-box">ماهو السبب الرئيسي للانتفاخ والحكة ؟</div>
+        <div class="answer-box">
+            الجلوس لفترات طويلة وضغط الاوردة والتعرق الاكل الحار او الامساك المزمن والاجتهاد وعوامل اخرى تسبب الإنتفاخ والحكة والكريم يعمل على تخفيف الإنتفاخ والحكة واسترجاع راحتك
+        </div>
+
+        <div class="question-box">هل الكريم آمن ؟</div>
+        <div class="answer-box">نعم، الكريم آمن مستخلص من أعشاب طبيعية</div>
+
+        <div class="question-box">كم مرة يجب ان استخدم المنتج ؟</div>
+        <div class="answer-box">مرتين يوميًا للحصول على أفضل النتائج</div>
+
+        <div class="question-box">متى سألاحظ النتائج ؟</div>
+        <div class="answer-box">
+            عادة يمكن ملاحظة فرق من أول استخدام والحدة في النتائج قد تكون ملحوظة خلال 3 إلى 5 أيام ، من الاستخدام المنتظم. و 9 من كل 10 عملاء لاحظوا فرقًا في أول أسبوع
+        </div>
+
+        <div class="question-box">هل الكريم مناسب للجميع ؟</div>
+        <div class="answer-box">
+            نعم، الكريم مصنوع من مكونات طبيعية ومصمم خصيصًا ليكون لطيفًا على البشرة
+        </div>
+    </div>
+
+    <div class="life-banner">
+        <h2>إبدأ حياة جديدة بثقة أكبر</h2>
+        <a href="checkout.html" class="order-now">أطلب الآن</a>
+    </div>
+
+    <div class="guarantee-section text-end mt-5">
+        <div class="guarantee-title">ضمانات شركتنا</div>
+        <div class="p-3 text-center text-muted fw-bold">موثوقية وجودة مضمونة</div>
+
+        <div class="guarantee-item">
+            <div class="guarantee-icon">📞</div>
+            <div class="guarantee-content">
+                <h5>خدمة بعد البيع</h5>
+                <p>خدمة العملاء مباشرة 24/24 طيلة أيام الأسبوع</p>
+            </div>
+        </div>
+
+        <div class="guarantee-item">
+            <div class="guarantee-icon">🚚</div>
+            <div class="guarantee-content">
+                <h5>توصيل سريع</h5>
+                <p>توصيل سريع للمنتج إلى العنوان المرسل</p>
+            </div>
+        </div>
+
+        <div class="guarantee-item">
+            <div class="guarantee-icon">💵</div>
+            <div class="guarantee-content">
+                <h5>الدفع عند الاستلام</h5>
+                <p>لن تقوم بدفع أي شيء حتى تتوصل بالطلبية</p>
+            </div>
+        </div>
+
+        <div class="guarantee-item border-0">
+            <div class="guarantee-icon">✅</div>
+            <div class="guarantee-content">
+                <h5>ضمان المنتج</h5>
+                <p>ضمان لمدة 31 يوم، إذا لم يعجبك المنتج يمكنك استعادة أموالك</p>
+            </div>
+        </div>
+    </div>
+</div>
+<audio id="myAudio" loop>
+  <source src="sot.mp3" type="audio/mpeg">
+  <!-- المتصفح لا يدعم تشغيل الصوت -->
+</audio>
+<script>
+function goOrder(){
+  location.href = "checkout.html";
+}
+</script>
+</body>
+</html>
